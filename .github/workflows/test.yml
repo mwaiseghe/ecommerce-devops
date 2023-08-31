@@ -1,0 +1,27 @@
+name: Unit Tests
+on:
+    push:
+        branches:
+            - main
+            - dev
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get my code into Github
+              uses: actions/checkout@v2
+
+            - name: Setting up node
+              uses: actions/setup-node@v1
+              with:
+                node-version: 18.x
+            - name: Install dependencies
+              run: npm install
+            - name: Run tests
+              run: npm run test
+            - name: Upload results to Github Artifacts
+              uses: actions/upload-artifact@v2
+              with:
+                name: test-results
+                path: ./test-results
