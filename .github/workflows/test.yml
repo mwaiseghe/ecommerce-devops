@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Unit Tests For Ubuntu
 on:
     push:
         branches:
